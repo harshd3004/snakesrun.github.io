@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SnakesRun - the classic snake game</title>
+  <script type="module" crossorigin src="./assets/index-7daf2816.js"></script>
+  <link rel="stylesheet" href="./assets/index-0b2fb789.css">
+</head>
+<body class="min-h-screen bg-stone-800">
+    <nav class="bg-purple-600 flex px-2 justify-between">
+        <div class="flex items-center space-x-2">
+            <img src="./assets/cute-cartoon-snake-48c5a3e0.jpg" class="w-10 rounded-3xl" alt="snake logo">
+            <span class="font-extrabold text-xl">SnakesRun</span>
+        </div>
+        <div>
+            <ul class="px-5 py-3 flex space-x-4 text-white justify-end">
+                <li id="NGameBtn" class="p-1 cursor-pointer rounded-lg border-2 hover:bg-purple-400">New Game</li>
+                <li id="PGameBtn" class="p-1 cursor-pointer rounded-lg border-2 hover:bg-purple-400">Pause</li>
+                <li id="DiffBtn" class="py-1 px-2  cursor-pointer rounded-lg border-2 hover:bg-purple-400 relative">
+                    <span>Difficulty &#9660;</span>
+                    <ul id="diffList" class="hidden bg-purple-600 p-1 rounded-lg shadow-lg absolute">
+                        <li class="block cursor-pointer hover:bg-purple-400 p-2 border-y-2 border-white rounded-sm" id="EasyBtn">Easy</li>
+                        <li class="block cursor-pointer hover:bg-purple-400 p-2 border-y-2 border-white rounded-sm" id="MedBtn">Medium</li>
+                        <li class="block cursor-pointer hover:bg-purple-400 p-2 border-y-2 border-white rounded-sm" id="HardBtn">Hard</li>
+                    </ul>
+                </li>
+                <li id="SoundBtn" class="p-1 cursor-pointer rounded-lg border-2 hover:bg-purple-400">
+                    <img id="MuteBtn" src="data:image/png;base64,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" alt="mute-ico" class="h-7 w-7">
+                    <img id="unMuteBtn" src="./assets/unmute-icon-0ccc60ec.png" alt="mute-ico" class="h-7 w-7  hidden">
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="my-5 flex justify-center items-center space-x-14">
+        <div class="relative info bg-red-400 w-1/4 h-52 border-2 border-yellow-400 ">
+            <span id="score" class="m-5 font-bold font-mono text-xl max-lg:text-base">Score : 0</span><br>
+            <span id="h-score" class="m-5 font-bold font-mono text-xl max-lg:text-base">High-Score : 0</span>
+            <img src="./assets/HappySnake-2187c448.gif" alt="Vibing Snake" class="absolute h-24 w-24 bottom-8 left-28 max-[900px]:left-12 " id="VibSnakeimg">
+            <img src="./assets/GameOverImg-fc302843.gif" alt="New High Score made" class="absolute h-24 bottom-8 left-28 hidden max-[900px]:left-12 " id="NewHSimg">
+            <img src="./assets/GameOver-ee06536c.gif" alt="Game Over" class="absolute h-24 bottom-8 left-28 hidden max-[900px]:left-12 " id="GameOverimg">
+        </div>
+        <div id="board" class="board bg-yellow-400 w-[85vmin] h-[87vmin] grid grid-rows-18 grid-cols-18 border-2 border-red-700">
+        </div>
+    </div>
+</body>
+
+</html>
